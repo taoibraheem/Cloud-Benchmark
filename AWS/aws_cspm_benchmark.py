@@ -61,7 +61,9 @@ totals = {
             "eks": 0
 }
 GRAND_TOTAL_RESOURCES = 0
-ec2 = boto3.client("ec2")
+profile = 'PROFILE_NAME'
+session = boto3.Session(profile_name=profile)
+ec2 = session.client('ec2')
 response = ec2.describe_regions()
 for region in response["Regions"]:
     RegionName = region["RegionName"]
